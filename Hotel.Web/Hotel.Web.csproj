@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Hotel.Business\Hotel.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\theme\" />
+  </ItemGroup>
+
 </Project>
