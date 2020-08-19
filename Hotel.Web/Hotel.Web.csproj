@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Auth\" />
     <Folder Include="wwwroot\theme\" />
   </ItemGroup>
 

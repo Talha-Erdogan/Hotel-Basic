@@ -24,7 +24,7 @@ namespace Hotel.Business.Enums
         public const string PAGE_PROFILEDETAIL_BATCHEDIT = "PAGE_PROFILEDETAIL_BATCHEDIT";
 
         //profile member
-        public const string PAGE_PROFILEMEMBER_BATCHEDIT = "PAGE_PROFILEMEMBER_BATCHEDIT";
+        public const string PAGE_PROFILEPERSONNEL_BATCHEDIT = "PAGE_PROFILEPERSONNEL_BATCHEDIT";
 
     }
 }
