@@ -128,5 +128,21 @@ namespace Hotel.Business
 
             return result;
         }
+        public int Delete(int id, int deletedBy)
+        {
+            int result = 0;
+
+            using (AppDBContext dbContext = new AppDBContext(_config))
+            {
+                var profile = dbContext.Profile.Where(x => x.Id == id).FirstOrDefault();
+                profile.IsDeleted = true;
+                profile.DeletedBy = deletedBy;
+                profile.DeletedDateTime = DateTime.Now;
+                dbContext.Entry(profile).State = EntityState.Modified;
+                result = dbContext.SaveChanges();
+            }
+
+            return result;
+        }
     }
 }

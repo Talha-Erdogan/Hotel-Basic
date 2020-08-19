@@ -14,5 +14,6 @@ namespace Hotel.Business.İnterfaces
         Profile GetById(int id);
         int Add(Profile record);
         int Update(Profile record);
+        int Delete(int id, int deletedBy);
     }
 }
