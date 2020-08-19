@@ -1,6 +1,6 @@
 ﻿using Hotel.Business.İnterfaces;
 using Hotel.Business.Models;
-using Hotel.Business.Models.Auth;
+using Hotel.Business.Models.Room;
 using Hotel.Data;
 using Hotel.Data.Entity;
 using Microsoft.EntityFrameworkCore;
@@ -13,31 +13,25 @@ using System.Linq.Dynamic.Core;
 
 namespace Hotel.Business
 {
-   public class AuthService : IAuthService
+    public class RoomService : IRoomService
     {
         private IConfiguration _config;
 
-        public AuthService(IConfiguration config)
+        public RoomService(IConfiguration config)
         {
             _config = config;
         }
 
-        public PaginatedList<Auth> GetAllPaginatedWithDetailBySearchFilter(AuthSearchFilter searchFilter)
+        public PaginatedList<Room> GetAllPaginatedWithDetailBySearchFilter(RoomSearchFilter searchFilter)
         {
-            PaginatedList<Auth> resultList = new PaginatedList<Auth>(new List<Auth>(), 0, searchFilter.CurrentPage, searchFilter.PageSize, searchFilter.SortOn, searchFilter.SortDirection);
+            PaginatedList<Room> resultList = new PaginatedList<Room>(new List<Room>(), 0, searchFilter.CurrentPage, searchFilter.PageSize, searchFilter.SortOn, searchFilter.SortDirection);
 
             using (AppDBContext dbContext = new AppDBContext(_config))
             {
-                var query = from a in dbContext.Auth
-                            where a.IsDeleted == false
+                var query = from a in dbContext.Room
                             select a;
 
                 // filtering
-                if (!string.IsNullOrEmpty(searchFilter.Filter_Code))
-                {
-                    query = query.Where(r => r.Code.Contains(searchFilter.Filter_Code));
-                }
-
                 if (!string.IsNullOrEmpty(searchFilter.Filter_Name))
                 {
                     query = query.Where(r => r.Name.Contains(searchFilter.Filter_Name));
@@ -66,7 +60,7 @@ namespace Hotel.Business
                 query = query.Skip((searchFilter.CurrentPage - 1) * searchFilter.PageSize).Take(searchFilter.PageSize);
 
 
-                resultList = new PaginatedList<Auth>(
+                resultList = new PaginatedList<Room>(
                     query.ToList(),
                     totalCount,
                     searchFilter.CurrentPage,
@@ -79,68 +73,47 @@ namespace Hotel.Business
             return resultList;
         }
 
-        public List<Auth> GetAll()
+        public List<Room> GetAll()
         {
-            List<Auth> resultList = new List<Auth>();
+            List<Room> resultList = new List<Room>();
             using (AppDBContext dbContext = new AppDBContext(_config))
             {
-                resultList.AddRange(dbContext.Auth.Where(x => x.IsDeleted == false).AsNoTracking().ToList());
+                resultList.AddRange(dbContext.Room.AsNoTracking().ToList());
             }
             return resultList;
         }
 
-        public Auth GetById(int id)
+        public Room GetById(int id)
         {
-            Auth result = null;
+            Room result = null;
 
             using (AppDBContext dbContext = new AppDBContext(_config))
             {
-                result = dbContext.Auth.Where(a => a.Id == id && a.IsDeleted == false).AsNoTracking().SingleOrDefault();
+                result = dbContext.Room.Where(a => a.Id == id ).AsNoTracking().SingleOrDefault();
             }
 
             return result;
         }
 
-        public int Add(Auth record)
+        public int Add(Room record)
         {
             int result = 0;
-            record.IsDeleted = false;
             using (AppDBContext dbContext = new AppDBContext(_config))
             {
                 dbContext.Entry(record).State = EntityState.Added;
                 result = dbContext.SaveChanges();
             }
-
             return result;
         }
 
-        public int Update(Auth record)
+        public int Update(Room record)
         {
             int result = 0;
-
             using (AppDBContext dbContext = new AppDBContext(_config))
             {
                 dbContext.Entry(record).State = EntityState.Modified;
                 result = dbContext.SaveChanges();
             }
-
-            return result;
-        }
-
-        public int Delete(int id, int deletedBy)
-        {
-            int result = 0;
-
-            using (AppDBContext dbContext = new AppDBContext(_config))
-            {
-                var auth = dbContext.Auth.Where(x => x.Id == id).FirstOrDefault();
-                auth.IsDeleted = true;
-                auth.DeletedBy = deletedBy;
-                auth.DeletedDateTime = DateTime.Now;
-                dbContext.Entry(auth).State = EntityState.Modified;
-                result = dbContext.SaveChanges();
-            }
-
             return result;
         }
     }
