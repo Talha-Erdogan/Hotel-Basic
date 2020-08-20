@@ -309,13 +309,13 @@
                     $('#batchEditForm').submit();
                 }});
 
-                //personel list page size and currenpage
+                //Personnel list page size and currenpage
                 $('#txtPersonnelPageSize').keyup(function () { $('#hiddenPersonnelPageSize').val($('#txtPersonnelPageSize').val()); });
                 $('#txtPersonnelPageSize').val(@((Model.PersonnelList.PageSize)));
                 $('#txtPersonnelCurrentPage').keyup(function () { $('#hiddenPersonnelCurrentPage').val($('#txtPersonnelCurrentPage').val()); });
                 $('#txtPersonnelCurrentPage').val(@((Model.PersonnelList.CurrentPage)));
 
-                //personel Which Is Not Include page size and currenpage
+                //Personnel Which Is Not Include page size and currenpage
                 $('#txtPersonnelWhichIsNotIncludePageSize').keyup(function () { $('#hiddenPersonnelWhichIsNotIncludePageSize').val($('#txtPersonnelWhichIsNotIncludePageSize').val()); });
                 $('#txtPersonnelWhichIsNotIncludePageSize').val(@((Model.PersonnelWhichIsNotIncludeList.PageSize)));
                 $('#txtPersonnelWhichIsNotIncludeCurrentPage').keyup(function () { $('#hiddenPersonnelWhichIsNotIncludeCurrentPage').val($('#txtPersonnelWhichIsNotIncludeCurrentPage').val()); });
@@ -345,7 +345,7 @@
                     $('#batchEditForm').submit();
                 }
 
-                //personel Which Is Not Include sorting and paging
+                //Personnel Which Is Not Include sorting and paging
         function ClickSortingPersonnelNotInclude(sortOn, sortDirection) {
             $('#hiddenPersonnelWhichIsNotIncludeSortOn').val(sortOn);
             $('#hiddenPersonnelWhichIsNotIncludeSortDirection').val(sortDirection);

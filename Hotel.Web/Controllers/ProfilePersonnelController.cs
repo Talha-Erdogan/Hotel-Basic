@@ -27,7 +27,7 @@ namespace Hotel.Web.Controllers
         }
 
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEEMPLOYEE_BATCHEDIT)]
+        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT)]
         public ActionResult BatchEdit()
         {
             BatchEditViewModel model = new BatchEditViewModel();
@@ -49,7 +49,7 @@ namespace Hotel.Web.Controllers
         }
 
         [HttpPost]
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEEMPLOYEE_BATCHEDIT)]
+       //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT)]
         public ActionResult BatchEdit(BatchEditViewModel model)
         {
             if (!ModelState.IsValid)
@@ -105,7 +105,7 @@ namespace Hotel.Web.Controllers
                     profilePersonnelWhichIsNotIncludeListSearchFilter.Filter_Personnel_Name = model.PersonnelWhichIsNotIncludeList.Filter.Filter_Personnel_Name;
                     profilePersonnelWhichIsNotIncludeListSearchFilter.Filter_Personnel_LastName = model.PersonnelWhichIsNotIncludeList.Filter.Filter_Personnel_LastName;
 
-                    model.PersonnelList.DataList = GetAllEmployeeByProfileId(profilePersonnelSearchFilter);
+                    model.PersonnelList.DataList = GetAllEmployeeByProfileId( profilePersonnelSearchFilter);
                     model.PersonnelWhichIsNotIncludeList.DataList = GetAllEmployeeByProfileIdWhichIsNotIncluded(profilePersonnelWhichIsNotIncludeListSearchFilter);
 
                 }
@@ -154,7 +154,7 @@ namespace Hotel.Web.Controllers
                     {
                         foreach (var item in record)
                         {
-                            var apiResponseModel = _profilePersonnelService.DeleteByProfileIdAndEmployeeId(model.ProfileId.Value, item.Id);
+                            var apiResponseModel = _profilePersonnelService.DeleteByProfileIdAndEmployeeId( model.ProfileId.Value, item.Id);
                         }
                     }
                 }
@@ -192,6 +192,7 @@ namespace Hotel.Web.Controllers
                     model.PersonnelWhichIsNotIncludeList.PageSize = 10;
                 }
 
+               
                 ProfilePersonnelSearchFilter profilePersonnelSearchFilter = new ProfilePersonnelSearchFilter();
                 profilePersonnelSearchFilter.Filter_ProfileId = model.ProfileId.Value;
                 profilePersonnelSearchFilter.CurrentPage = model.PersonnelList.CurrentPage.HasValue ? model.PersonnelList.CurrentPage.Value : 1;
@@ -212,6 +213,15 @@ namespace Hotel.Web.Controllers
 
                 model.PersonnelList.DataList = GetAllEmployeeByProfileId(profilePersonnelSearchFilter);
                 model.PersonnelWhichIsNotIncludeList.DataList = GetAllEmployeeByProfileIdWhichIsNotIncluded(profilePersonnelWhichIsNotIncludeListSearchFilter);
+
+                if (model.PersonnelList.DataList ==null || model.PersonnelList.DataList.Items ==null)
+                {
+                    model.PersonnelList.DataList = new Business.Models.PaginatedList<PersonnelCheckViewModel>(new List<PersonnelCheckViewModel>(), 0, 1, 10, "", "");
+                }
+                if (model.PersonnelWhichIsNotIncludeList.DataList == null || model.PersonnelWhichIsNotIncludeList.DataList.Items ==null)
+                {
+                    model.PersonnelWhichIsNotIncludeList.DataList = new Business.Models.PaginatedList<PersonnelCheckViewModel>(new List<PersonnelCheckViewModel>(), 0, 1, 10, "", "");
+                }
             }
             else
             {
@@ -254,6 +264,7 @@ namespace Hotel.Web.Controllers
                     return new PaginatedList<PersonnelCheckViewModel>(new List<PersonnelCheckViewModel>(), 0, 1, 10, "", "");
                 }
         }
+
 
         [NonAction]
         private PaginatedList<PersonnelCheckViewModel> GetAllEmployeeByProfileIdWhichIsNotIncluded(ProfilePersonnelSearchFilter profilePersonnelWhichIsNotIncludeListSearchFilter)

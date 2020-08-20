@@ -132,286 +132,163 @@
         <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
-
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="nav-icon icon-layers"></i> Auths
-                        </a>
-                        <ul class="nav-dropdown-items">
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Auth/Add">
-                                    <i class="nav-icon icon-cursor"></i> Auths Add
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Auth/List">
-                                    <i class="nav-icon icon-cursor"></i> Auth List
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="nav-icon icon-layers"></i> Profiles And Auths
-                        </a>
-                        <ul class="nav-dropdown-items">
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Profile/Add">
-                                    <i class="nav-icon icon-cursor"></i> Profile Add
-                                </a>
-                            </li>
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Profile/List">
-                                    <i class="nav-icon icon-cursor"></i>Profile List
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/ProfileDetail/BatchEdit">
-                                    <i class="nav-icon icon-cursor"></i> Profile Details
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/ProfilePersonnel/BatchEdit">
-                                    <i class="nav-icon icon-cursor"></i> Profile Personnel
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-
-
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="nav-icon icon-layers"></i> Customers
-                        </a>
-                        <ul class="nav-dropdown-items">
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Customer/Add">
-                                    <i class="nav-icon icon-cursor"></i> Customers Add
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Customer/List">
-                                    <i class="nav-icon icon-cursor"></i> Customer List
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="nav-icon icon-layers"></i> Personnels
-                        </a>
-                        <ul class="nav-dropdown-items">
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Personnel/Add">
-                                    <i class="nav-icon icon-cursor"></i> Personnels Add
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Personnel/List">
-                                    <i class="nav-icon icon-cursor"></i> Personnel List
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a class="nav-link nav-dropdown-toggle" href="#">
-                            <i class="nav-icon icon-layers"></i> Rooms
-                        </a>
-                        <ul class="nav-dropdown-items">
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Room/Add">
-                                    <i class="nav-icon icon-cursor"></i> Rooms Add
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Room/List">
-                                    <i class="nav-icon icon-cursor"></i> Room List
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    @*@if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_AUTH_LIST, AuthCodeStatic.PAGE_AUTH_ADD }))
-        {
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-layers"></i> Auths
-                </a>
-                <ul class="nav-dropdown-items">
-
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_AUTH_ADD))
+                    @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_AUTH_LIST, AuthCodeStatic.PAGE_AUTH_ADD }))
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Auth/Add">
-                                <i class="nav-icon icon-cursor"></i> Auths Add
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#">
+                                <i class="nav-icon icon-layers"></i> Auths
                             </a>
-                        </li>
-                    }
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_AUTH_LIST))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Auth/List">
-                                <i class="nav-icon icon-cursor"></i> Auth List
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
+                            <ul class="nav-dropdown-items">
 
-        @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_NEWS_LIST, AuthCodeStatic.PAGE_NEWS_ADD }))
-        {
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-layers"></i> News
-                </a>
-                <ul class="nav-dropdown-items">
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_NEWS_ADD))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/New/Add">
-                                <i class="nav-icon icon-cursor"></i> New Add
-                            </a>
-                        </li>
-                    }
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_NEWS_LIST))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/New/List">
-                                <i class="nav-icon icon-cursor"></i> New List
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
-
-        @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_ANNOUNCEMENT_LIST, AuthCodeStatic.PAGE_ANNOUNCEMENT_ADD }))
-        {
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-layers"></i> Announcements
-                </a>
-                <ul class="nav-dropdown-items">
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_ANNOUNCEMENT_ADD))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Announcement/Add">
-                                <i class="nav-icon icon-cursor"></i> Announcement Add
-                            </a>
-                        </li>
-                    }
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_ANNOUNCEMENT_LIST))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Announcement/List">
-                                <i class="nav-icon icon-cursor"></i> Announcement List
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
-
-        @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_EMPLOYEE_LIST, AuthCodeStatic.PAGE_EMPLOYEE_ADD }))
-        {
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-layers"></i> Employees
-                </a>
-                <ul class="nav-dropdown-items">
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_EMPLOYEE_ADD))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Employee/Add">
-                                <i class="nav-icon icon-cursor"></i> Employee Add
-                            </a>
-                        </li>
-                    }
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_EMPLOYEE_LIST))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Employee/List">
-                                <i class="nav-icon icon-cursor"></i> Employee List
-                            </a>
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
-
-        @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_PROFILE_LIST, AuthCodeStatic.PAGE_PROFILE_ADD, AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT, AuthCodeStatic.PAGE_PROFILEEMPLOYEE_BATCHEDIT }))
-        {
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-layers"></i> Profiles And Auths
-                </a>
-                <ul class="nav-dropdown-items">
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILE_ADD))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Profile/Add">
-                                <i class="nav-icon icon-cursor"></i> Profile Add
-                            </a>
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_AUTH_ADD))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Auth/Add">
+                                            <i class="nav-icon icon-cursor"></i> Auths Add
+                                        </a>
+                                    </li>
+                                }
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_AUTH_LIST))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Auth/List">
+                                            <i class="nav-icon icon-cursor"></i> Auth List
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
                         </li>
                     }
 
+                    @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_CUSTOMER_LIST, AuthCodeStatic.PAGE_CUSTOMER_ADD }))
+                    {
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#">
+                                <i class="nav-icon icon-layers"></i> Customers
+                            </a>
+                            <ul class="nav-dropdown-items">
 
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILE_LIST))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/Profile/List">
-                                <i class="nav-icon icon-cursor"></i>Profile List
-                            </a>
-                        </li>
-                    }
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/ProfileDetail/BatchEdit">
-                                <i class="nav-icon icon-cursor"></i> Profile Details
-                            </a>
-                        </li>
-                    }
-                    @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILEEMPLOYEE_BATCHEDIT))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="~/ProfileEmployee/BatchEdit">
-                                <i class="nav-icon icon-cursor"></i> Profile Employees
-                            </a>
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_CUSTOMER_ADD))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Customer/Add">
+                                            <i class="nav-icon icon-cursor"></i> Customers Add
+                                        </a>
+                                    </li>
+                                }
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_CUSTOMER_LIST))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Customer/List">
+                                            <i class="nav-icon icon-cursor"></i> Customer List
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
                         </li>
                     }
 
-                </ul>
-            </li>
-        }*@
+                    @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_PERSONNEL_LIST, AuthCodeStatic.PAGE_PERSONNEL_ADD }))
+                    {
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#">
+                                <i class="nav-icon icon-layers"></i> Personnels
+                            </a>
+                            <ul class="nav-dropdown-items">
+
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PERSONNEL_ADD))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Personnel/Add">
+                                            <i class="nav-icon icon-cursor"></i> Personnels Add
+                                        </a>
+                                    </li>
+                                }
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PERSONNEL_LIST))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Personnel/List">
+                                            <i class="nav-icon icon-cursor"></i> Personnel List
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_PROFILE_LIST, AuthCodeStatic.PAGE_PROFILE_ADD, AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT, AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT }))
+                    {
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#">
+                                <i class="nav-icon icon-layers"></i> Profiles And Auths
+                            </a>
+                            <ul class="nav-dropdown-items">
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILE_ADD))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Profile/Add">
+                                            <i class="nav-icon icon-cursor"></i> Profile Add
+                                        </a>
+                                    </li>
+                                }
+
+
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILE_LIST))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Profile/List">
+                                            <i class="nav-icon icon-cursor"></i>Profile List
+                                        </a>
+                                    </li>
+                                }
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/ProfileDetail/BatchEdit">
+                                            <i class="nav-icon icon-cursor"></i> Profile Details
+                                        </a>
+                                    </li>
+                                }
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/ProfilePersonnel/BatchEdit">
+                                            <i class="nav-icon icon-cursor"></i> Profile Personnels
+                                        </a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </li>
+                    }
+
+                    @if (SessionHelper.CheckAuthForCurrentUser(new string[] { AuthCodeStatic.PAGE_ROOM_LIST, AuthCodeStatic.PAGE_ROOM_ADD }))
+                    {
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#">
+                                <i class="nav-icon icon-layers"></i> Rooms
+                            </a>
+                            <ul class="nav-dropdown-items">
+
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_ROOM_ADD))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Room/Add">
+                                            <i class="nav-icon icon-cursor"></i> Rooms Add
+                                        </a>
+                                    </li>
+                                }
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_ROOM_LIST))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Room/List">
+                                            <i class="nav-icon icon-cursor"></i> Room List
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
 
 
                 </ul>

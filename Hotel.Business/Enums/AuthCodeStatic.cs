@@ -47,5 +47,8 @@ namespace Hotel.Business.Enums
         public const string PAGE_ROOM_DISPLAY = "PAGE_ROOM_DISPLAY";
         public const string PAGE_ROOM_DELETE = "PAGE_ROOM_DELETE";
 
+        //room reservation operation
+        public const string PAGE_ROOMRESERVATION_OPERATION = "PAGE_ROOMRESERVATION_OPERATION";
+
     }
 }
