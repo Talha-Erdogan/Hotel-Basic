@@ -26,5 +26,26 @@ namespace Hotel.Business.Enums
         //profile member
         public const string PAGE_PROFILEPERSONNEL_BATCHEDIT = "PAGE_PROFILEPERSONNEL_BATCHEDIT";
 
+        //customer
+        public const string PAGE_CUSTOMER_LIST = "PAGE_CUSTOMER_LIST";
+        public const string PAGE_CUSTOMER_ADD = "PAGE_CUSTOMER_ADD";
+        public const string PAGE_CUSTOMER_EDIT = "PAGE_CUSTOMER_EDIT";
+        public const string PAGE_CUSTOMER_DISPLAY = "PAGE_CUSTOMER_DISPLAY";
+        public const string PAGE_CUSTOMER_DELETE = "PAGE_CUSTOMER_DELETE";
+
+        //personnel
+        public const string PAGE_PERSONNEL_LIST = "PAGE_PERSONNEL_LIST";
+        public const string PAGE_PERSONNEL_ADD = "PAGE_PERSONNEL_ADD";
+        public const string PAGE_PERSONNEL_EDIT = "PAGE_PERSONNEL_EDIT";
+        public const string PAGE_PERSONNEL_DISPLAY = "PAGE_PERSONNEL_DISPLAY";
+        public const string PAGE_PERSONNEL_DELETE = "PAGE_PERSONNEL_DELETE";
+
+        //room
+        public const string PAGE_ROOM_LIST = "PAGE_ROOM_LIST";
+        public const string PAGE_ROOM_ADD = "PAGE_ROOM_ADD";
+        public const string PAGE_ROOM_EDIT = "PAGE_ROOM_EDIT";
+        public const string PAGE_ROOM_DISPLAY = "PAGE_ROOM_DISPLAY";
+        public const string PAGE_ROOM_DELETE = "PAGE_ROOM_DELETE";
+
     }
 }
