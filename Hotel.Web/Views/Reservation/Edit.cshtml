@@ -1,0 +1,80 @@
+﻿@using Hotel.Business.Common
+@using Hotel.Web.Controllers
+@model Hotel.Web.Models.Reservation.AddViewModel
+
+@{
+    ViewData["Title"] = "Reservation Edit";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong> Reservation Edit </strong>
+            </div>
+            <div class="card-body">
+
+                @using (Html.BeginForm("Edit", "Reservation", FormMethod.Post, new { @class = "form-horizontal input-sm" }))
+                {
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.HiddenFor(m => m.CustomerId)
+                    @Html.HiddenFor(m => m.RoomId)
+                    @Html.HiddenFor(m => m.TotalDebt)
+                    @Html.HiddenFor(m => m.Customer_Name)
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Customer</label>
+                        <div class="col-md-9">
+                            @Model.Customer_Name
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Total Price: </label>
+                        <div class="col-md-9">
+                            @Model.TotalDebt
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <button class="btn btn-sm btn-primary" type="submit" id="btnSubmit" name="SubmitType" value="Edit">
+                                <i class="fa fa-dot-circle-o"></i>RELEASE
+                            </button>
+
+                            &nbsp;
+                            <a class="btn btn-sm btn-danger" href="~/Reservation/List">
+                                <i class="fa fa-ban"></i> Cancel
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            @if (ViewBag.ErrorMessage != null && !string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                            {
+                                <div class="text-danger">
+                                    @ViewBag.ErrorMessage
+                                </div>
+                            }
+                            @if (ViewBag.ErrorMessageList != null)
+                            {
+                                <div class="text-danger">
+                                    @foreach (var item in ViewBag.ErrorMessageList)
+                                    {
+                                        <span>@item</span>
+                                        <br />
+                                    }
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+</div>

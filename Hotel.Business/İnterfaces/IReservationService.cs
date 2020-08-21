@@ -10,7 +10,10 @@ namespace Hotel.Business.İnterfaces
     {
         List<Reservation> GetAll();
         List<RoomListWithDetail> GetAllRoomListWithDetail();
+        RoomListWithDetail GetRoomByRoomIdWithDetail(int roomId);
+        List<Customer> GetAllCustomerWhichIsNotReservation();
         Reservation GetById(int id);
+        Reservation GetByRoomIdWhichIsEmptyFalse(int roomId);
         int Add(Reservation record);
         int Update(Reservation record);
     }

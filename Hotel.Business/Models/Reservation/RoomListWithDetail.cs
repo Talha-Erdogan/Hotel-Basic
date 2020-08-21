@@ -9,6 +9,7 @@ namespace Hotel.Business.Models.Reservation
     {
         public int RoomId { get; set; }
         public string RoomName { get; set; }
+        public int RoomPrice { get; set; }
 
 
         public bool IsEmpty { get; set; }
