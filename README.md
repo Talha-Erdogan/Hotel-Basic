@@ -5,7 +5,7 @@ Asp.Net Core MVC - Otel Uygulaması (Basit)
 Katmanlı mimari yapısı ile proje geliştirilmiştir. Mimari 3 katmandan oluşmaktadır:
 - Hotel.Business
 - Hotel.Data
-- Hotel.UI
+- Hotel.Web
 
 Proje katmanlarından kısaca bahsedecek olursak;
 
