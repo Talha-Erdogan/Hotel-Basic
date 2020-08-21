@@ -20,3 +20,6 @@ Kullanılan Teknolojiler:
 - Entity Framework
 - Dependency Injection
 - Authorization Filter
+- Paginition Algoritması (CurrnetPage,PageSize,From,To ... )
+- Core UI Teması
+- Bootstrap
