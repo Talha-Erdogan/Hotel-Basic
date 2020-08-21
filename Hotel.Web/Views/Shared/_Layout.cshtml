@@ -22,6 +22,7 @@
     <meta name="keyword" content="Hotel">
     <title>@ViewData["Title"] - Hotel - Admin Panel</title>
     <!-- Icons-->
+    <link href="~/theme/css/all-themes.css" rel="stylesheet" />
     <link href="~/theme/vendors/@@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="~/theme/vendors/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
     <link href="~/theme/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -283,6 +284,26 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="~/Room/List">
                                             <i class="nav-icon icon-cursor"></i> Room List
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    @if (SessionHelper.CheckAuthForCurrentUser(new string[] {  AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION }))
+                    {
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#">
+                                <i class="nav-icon icon-layers"></i> Room Operations
+                            </a>
+                            <ul class="nav-dropdown-items">
+
+                                @if (SessionHelper.CheckAuthForCurrentUser(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="~/Reservation/List">
+                                            <i class="nav-icon icon-cursor"></i>  Room Operation
                                         </a>
                                     </li>
                                 }

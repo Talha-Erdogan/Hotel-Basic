@@ -59,6 +59,7 @@ namespace Hotel.Web
             services.AddTransient<IProfileDetailService, ProfileDetailService>();
             services.AddTransient<IProfilePersonnelService, ProfilePersonnelService>();
             services.AddTransient<IRoomService, RoomService>();
+            services.AddTransient<IReservationService, ReservationService>();
 
             //https://stackoverflow.com/questions/58885384/the-json-value-could-not-be-converted-to-system-nullablesystem-int32
             services.AddControllers().AddNewtonsoftJson();

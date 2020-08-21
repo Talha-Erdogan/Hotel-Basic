@@ -34,5 +34,6 @@ namespace Hotel.Data
         public DbSet<ProfileDetail> ProfileDetail { get; set; }
         public DbSet<ProfilePersonnel> ProfilePersonnel { get; set; }
         public DbSet<Room> Room { get; set; }
+        public DbSet<Reservation> Reservation { get; set; }
     }
 }
