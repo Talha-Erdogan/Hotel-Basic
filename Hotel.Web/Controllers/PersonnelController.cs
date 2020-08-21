@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotel.Business.Enums;
 using Hotel.Business.İnterfaces;
 using Hotel.Business.Models.Personnel;
+using Hotel.Web.Filters;
 using Hotel.Web.Models.Personnel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +19,7 @@ namespace Hotel.Web.Controllers
             _personnelService = personnelService;
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_LIST)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_LIST)]
         public ActionResult List()
         {
             ListViewModel model = new ListViewModel();
@@ -37,7 +39,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_LIST)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_LIST)]
         [HttpPost]
         public ActionResult List(ListViewModel model)
         {
@@ -68,14 +70,14 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_ADD)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_ADD)]
         public ActionResult Add()
         {
             Models.Personnel.AddViewModel model = new AddViewModel();
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_ADD)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_ADD)]
         [HttpPost]
         public ActionResult Add(Models.Personnel.AddViewModel model)
         {
@@ -104,7 +106,7 @@ namespace Hotel.Web.Controllers
             }
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_EDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_EDIT)]
         public ActionResult Edit(int id)
         {
             Models.Personnel.AddViewModel model = new AddViewModel();
@@ -125,7 +127,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNE_EDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PERSONNEL_EDIT)]
         [HttpPost]
         public ActionResult Edit(Models.Personnel.AddViewModel model)
         {
@@ -155,9 +157,6 @@ namespace Hotel.Web.Controllers
             }
             return RedirectToAction(nameof(PersonnelController.List));
         }
-
-
-
 
 
     }

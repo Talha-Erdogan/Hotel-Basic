@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Hotel.Business.Enums;
 using Hotel.Business.İnterfaces;
 using Hotel.Data.Entity;
+using Hotel.Web.Filters;
 using Hotel.Web.Models.ProfileDetail;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,7 +23,7 @@ namespace Hotel.Web.Controllers
             _profileService = profileService;
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT)]
         public ActionResult BatchEdit()
         {
             BatchEditViewModel model = new BatchEditViewModel();
@@ -33,7 +34,7 @@ namespace Hotel.Web.Controllers
         }
 
         [HttpPost]
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEDETAIL_BATCHEDIT)]
         public ActionResult BatchEdit(BatchEditViewModel model)
         {
             if (!ModelState.IsValid)
@@ -108,6 +109,9 @@ namespace Hotel.Web.Controllers
             }
             return View(model);
         }
+
+
+
 
         [NonAction]
         private List<AuthCheckViewModel> GetAllAuthByProfileId(int profileId)

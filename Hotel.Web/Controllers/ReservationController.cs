@@ -6,6 +6,7 @@ using Hotel.Business.Enums;
 using Hotel.Business.İnterfaces;
 using Hotel.Business.Models.Reservation;
 using Hotel.Data.Entity;
+using Hotel.Web.Filters;
 using Hotel.Web.Models.Reservation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,7 +24,7 @@ namespace Hotel.Web.Controllers
             _customerService = customerService;
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
         public IActionResult List()
         {
             List<RoomListWithDetail> model = new List<RoomListWithDetail>();
@@ -31,7 +32,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
         public ActionResult Add(int roomId)
         {
             if (roomId <= 0)
@@ -52,7 +53,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
         [HttpPost]
         public ActionResult Add(Models.Reservation.AddViewModel model)
         {
@@ -85,7 +86,7 @@ namespace Hotel.Web.Controllers
             }
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
         public ActionResult Edit(int roomId)
         {
             if (roomId <= 0)
@@ -122,7 +123,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_ROOMRESERVATION_OPERATION)]
         [HttpPost]
         public ActionResult Edit(Models.Reservation.AddViewModel model)
         {
@@ -155,6 +156,8 @@ namespace Hotel.Web.Controllers
             }
             return RedirectToAction(nameof(ReservationController.List));
         }
+
+
 
 
         [NonAction]

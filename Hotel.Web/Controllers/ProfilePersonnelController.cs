@@ -7,6 +7,7 @@ using Hotel.Business.İnterfaces;
 using Hotel.Business.Models;
 using Hotel.Business.Models.ProfilePersonnel;
 using Hotel.Data.Entity;
+using Hotel.Web.Filters;
 using Hotel.Web.Models.ProfilePersonnel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -27,7 +28,7 @@ namespace Hotel.Web.Controllers
         }
 
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT)]
         public ActionResult BatchEdit()
         {
             BatchEditViewModel model = new BatchEditViewModel();
@@ -49,7 +50,7 @@ namespace Hotel.Web.Controllers
         }
 
         [HttpPost]
-       //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILEPERSONNEL_BATCHEDIT)]
         public ActionResult BatchEdit(BatchEditViewModel model)
         {
             if (!ModelState.IsValid)
@@ -242,6 +243,8 @@ namespace Hotel.Web.Controllers
         }
 
 
+
+
         [NonAction]
         private PaginatedList<PersonnelCheckViewModel> GetAllEmployeeByProfileId(ProfilePersonnelSearchFilter profilePersonnelSearchFilter)
         {
@@ -265,7 +268,6 @@ namespace Hotel.Web.Controllers
                 }
         }
 
-
         [NonAction]
         private PaginatedList<PersonnelCheckViewModel> GetAllEmployeeByProfileIdWhichIsNotIncluded(ProfilePersonnelSearchFilter profilePersonnelWhichIsNotIncludeListSearchFilter)
         {
@@ -288,7 +290,6 @@ namespace Hotel.Web.Controllers
                 return new PaginatedList<PersonnelCheckViewModel>(new List<PersonnelCheckViewModel>(), 0, 1, 10, "", "");
             }
         }
-
 
         [NonAction]
         private List<SelectListItem> GetProfileSelectList()

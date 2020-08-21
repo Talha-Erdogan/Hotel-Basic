@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Hotel.Business.Enums;
 using Hotel.Business.İnterfaces;
 using Hotel.Business.Models.Customer;
+using Hotel.Web.Filters;
 using Hotel.Web.Models.Customer;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace Hotel.Web.Controllers
             _customerService = customerService;
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_LIST)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_LIST)]
         public ActionResult List()
         {
             ListViewModel model = new ListViewModel();
@@ -38,7 +39,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_LIST)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_LIST)]
         [HttpPost]
         public ActionResult List(ListViewModel model)
         {
@@ -69,14 +70,14 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_ADD)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_ADD)]
         public ActionResult Add()
         {
             Models.Customer.AddViewModel model = new AddViewModel();
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_ADD)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_ADD)]
         [HttpPost]
         public ActionResult Add(Models.Customer.AddViewModel model)
         {
@@ -102,7 +103,7 @@ namespace Hotel.Web.Controllers
             }
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_EDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_EDIT)]
         public ActionResult Edit(int id)
         {
             Models.Customer.AddViewModel model = new AddViewModel();
@@ -120,7 +121,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_EDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_CUSTOMER_EDIT)]
         [HttpPost]
         public ActionResult Edit(Models.Customer.AddViewModel model)
         {

@@ -6,6 +6,7 @@ using Hotel.Business.Common;
 using Hotel.Business.Enums;
 using Hotel.Business.İnterfaces;
 using Hotel.Business.Models.Profile;
+using Hotel.Web.Filters;
 using Hotel.Web.Models.Profile;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace Hotel.Web.Controllers
         {
             _profileService = profileService;
         }
-        // [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_LIST)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_LIST)]
         public ActionResult List()
         {
             ListViewModel model = new ListViewModel();
@@ -37,7 +38,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_LIST)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_LIST)]
         [HttpPost]
         public ActionResult List(ListViewModel model)
         {
@@ -68,14 +69,14 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_ADD)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_ADD)]
         public ActionResult Add()
         {
             Models.Profile.AddViewModel model = new AddViewModel();
             return View(model);
         }
 
-       // [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_ADD)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_ADD)]
         [HttpPost]
         public ActionResult Add(Models.Profile.AddViewModel model)
         {
@@ -88,7 +89,7 @@ namespace Hotel.Web.Controllers
             profile.Code = model.Code;
             profile.Name = model.Name;
             var result = _profileService.Add(profile);
-            if (result>0)
+            if (result > 0)
             {
                 return RedirectToAction(nameof(ProfileController.List));
             }
@@ -99,8 +100,7 @@ namespace Hotel.Web.Controllers
             }
         }
 
-
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_EDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_EDIT)]
         public ActionResult Edit(int id)
         {
             Models.Profile.AddViewModel model = new AddViewModel();
@@ -115,7 +115,7 @@ namespace Hotel.Web.Controllers
             return View(model);
         }
 
-        //[AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_EDIT)]
+        [AppAuthorizeFilter(AuthCodeStatic.PAGE_PROFILE_EDIT)]
         [HttpPost]
         public ActionResult Edit(Models.Profile.AddViewModel model)
         {
@@ -133,7 +133,7 @@ namespace Hotel.Web.Controllers
             if (model.SubmitType == "Edit")
             {
                 var result = _profileService.Update(profile);
-                if (result<=0)
+                if (result <= 0)
                 {
                     ViewBag.ErrorMessage = "Not Edited";
                     return View(model);
